@@ -46,6 +46,34 @@ public class MainForm : Form
     /// </summary>
     private Icon LoadIcon()
     {
+        try
+        {
+            var associatedIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            if (associatedIcon != null)
+            {
+                return (Icon)associatedIcon.Clone();
+            }
+        }
+        catch
+        {
+            // ignore and fallback
+        }
+
+        try
+        {
+            const string embeddedIconResource = "PathSnap.Resources.app.ico";
+            using var stream = typeof(MainForm).Assembly.GetManifestResourceStream(embeddedIconResource);
+            if (stream != null)
+            {
+                using var iconFromResource = new Icon(stream);
+                return (Icon)iconFromResource.Clone();
+            }
+        }
+        catch
+        {
+            // ignore and fallback
+        }
+
         var iconPath = Path.Combine(AppContext.BaseDirectory, "Resources", "app.ico");
         if (!File.Exists(iconPath))
         {

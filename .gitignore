@@ -1,0 +1,18 @@
+# Build artifacts
+bin/
+obj/
+artifacts/
+temp_build_output/
+
+# IDE/user files
+.vs/
+.claude/
+*.user
+*.suo
+
+# Local runtime/package artifacts
+*.zip
+
+# Internal docs (do not open source)
+AGENTS.md
+需求.md

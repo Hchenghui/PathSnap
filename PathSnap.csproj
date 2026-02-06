@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>PathSnap</AssemblyName>
+    <RootNamespace>PathSnap</RootNamespace>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Svg" Version="3.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\app.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\*.svg">
+      <LogicalName>PathSnap.Resources.Icons.%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
+
